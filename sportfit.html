@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#142b21">
+<title>SportFit — O teu treino, à tua maneira</title>
+<style>
+:root{--green:#142b21;--lime:#c8f169;--paper:#f5f7f2;--muted:#66736a;--line:#dfe5dc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:#18251d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:var(--green);color:white;padding:calc(20px + env(safe-area-inset-top)) 20px 26px;border-radius:0 0 28px 28px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:25px;font-weight:900}
+h1{font-size:26px;margin:0}header p{color:#d1ded4;margin:5px 0 0;font-size:14px}.hero{margin-top:25px}.eyebrow{font-size:11px;letter-spacing:1.6px;color:var(--lime);font-weight:800}.hero h2{font-size:29px;line-height:1.12;margin:9px 0}.hero p{line-height:1.5;max-width:420px}
+main{max-width:720px;margin:auto;padding:18px 15px 42px}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 5px 18px #18322108}.step{font-size:11px;color:#597344;font-weight:800;letter-spacing:1px;text-transform:uppercase}.card h3{margin:6px 0 15px;font-size:19px}.field{margin:14px 0}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:8px}input,select,textarea{font:inherit;width:100%;padding:13px 12px;border:1px solid #d7dfd4;border-radius:12px;background:white;color:#17241b}textarea{min-height:190px;line-height:1.5;resize:vertical}
+.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.options.two{grid-template-columns:repeat(2,minmax(0,1fr))}.choice{position:relative}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice span{display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;text-align:center;min-height:83px;padding:10px 5px;border:1px solid var(--line);border-radius:14px;font-weight:750;font-size:13px;background:#fff}.choice small{font-weight:400;color:var(--muted);font-size:11px}.choice input:checked+span{border:2px solid #507b39;background:#eff7e5}.choice input:focus-visible+span{outline:3px solid #8ab65e}
+button{font:inherit;cursor:pointer;border:0;border-radius:13px;padding:14px 16px;font-weight:800}.primary{width:100%;background:var(--lime);color:var(--green);font-size:16px}.secondary{background:#edf2e9;color:#24452e}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1;min-width:130px}.note{font-size:12px;line-height:1.5;color:var(--muted)}.result{display:none}.result.show{display:block}.pill{display:inline-block;background:#eff7e5;color:#33572b;padding:6px 10px;border-radius:100px;font-size:12px;font-weight:800;margin:0 5px 7px 0}.session{border:1px solid var(--line);padding:13px;border-radius:14px;margin:10px 0}.session h4{margin:0 0 8px}.session ul{padding-left:20px;line-height:1.55;margin:7px 0}.footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 20px 30px}
+@media(min-width:600px){header{padding-left:max(24px,calc((100% - 680px)/2));padding-right:max(24px,calc((100% - 680px)/2))}.hero h2{font-size:36px}.options .choice span{min-height:90px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">S</div><div><h1>SportFit</h1><p>O teu desporto. O teu ritmo.</p></div></div>
+  <div class="hero"><div class="eyebrow">TREINA COM INTENÇÃO</div><h2>O teu próximo treino começa aqui.</h2><p>Escolhe o desporto, define o teu ritmo e cria um plano que podes adaptar às tuas necessidades.</p></div>
+</header>
+<main>
+  <form id="builder">
+    <section class="card">
+      <div class="step">01 / O teu perfil</div><h3>Conta-nos sobre ti</h3>
+      <div class="field"><label for="sport">Que desporto praticas?</label><input id="sport" name="sport" list="sports" placeholder="Ex.: futebol, corrida, dança..." required><datalist id="sports"><option>Futebol</option><option>Corrida</option><option>Musculação</option><option>Ciclismo</option><option>Natação</option><option>Basquetebol</option><option>Ténis</option><option>Dança</option></datalist></div>
+      <div class="field"><label for="level">Qual é o teu nível?</label><select id="level"><option>Iniciante</option><option selected>Intermédio</option><option>Avançado</option></select></div>
+      <div class="field"><label for="goal">Qual é o teu objetivo?</label><select id="goal"><option>Melhorar a condição física</option><option>Ganhar resistência</option><option>Aumentar a força</option><option>Melhorar a técnica</option><option>Preparar uma competição</option></select></div>
+    </section>
+    <section class="card">
+      <div class="step">02 / A intensidade</div><h3>Como queres treinar?</h3>
+      <div class="options">
+        <label class="choice"><input type="radio" name="intensity" value="Fácil"><span>🌿 Fácil<small>Leve e gradual</small></span></label>
+        <label class="choice"><input type="radio" name="intensity" value="Normal" checked><span>⚡ Normal<small>Equilibrado</small></span></label>
+        <label class="choice"><input type="radio" name="intensity" value="Difícil"><span>🔥 Difícil<small>Exigente</small></span></label>
+      </div>
+      <div class="field"><label for="duration">Quanto tempo tens por sessão?</label><select id="duration"><option>15 minutos</option><option selected>30 minutos</option><option>45 minutos</option><option>60 minutos</option></select></div>
+    </section>
+    <section class="card">
+      <div class="step">03 / A regularidade</div><h3>Quantas vezes por semana?</h3>
+      <div class="options two">
+        <label class="choice"><input type="radio" name="frequency" value="1 vez por semana"><span>1 vez<small>por semana</small></span></label>
+        <label class="choice"><input type="radio" name="frequency" value="2 vezes por semana"><span>2 vezes<small>por semana</small></span></label>
+        <label class="choice"><input type="radio" name="frequency" value="3 vezes por semana" checked><span>3 vezes<small>por semana</small></span></label>
+        <label class="choice"><input type="radio" name="frequency" value="4 vezes por semana"><span>4 vezes<small>por semana</small></span></label>
+        <label class="choice"><input type="radio" name="frequency" value="5 vezes por semana"><span>5 vezes<small>por semana</small></span></label>
+        <label class="choice"><input type="radio" name="frequency" value="Todos os dias"><span>Todos os dias<small>com descanso adequado</small></span></label>
+      </div>
+    </section>
+    <button class="primary" type="submit">✦ Criar o meu plano</button>
+  </form>
+  <section id="result" class="card result" aria-live="polite">
+    <div class="step">04 / O teu plano</div><h3>O teu treino SportFit</h3><div id="summary"></div>
+    <p class="note">Edita o plano abaixo para substituir exercícios, alterar tempos ou acrescentar notas. Esta versão de demonstração não guarda os dados numa conta.</p>
+    <textarea id="editable" aria-label="Editar o plano de treino"></textarea>
+    <div class="actions" style="margin-top:10px"><button type="button" class="secondary" id="copy">Copiar treino</button><button type="button" class="secondary" id="save">Descarregar .txt</button></div>
+    <p id="message" class="note"></p>
+  </section>
+  <p class="note">A SportFit apresenta sugestões gerais, não aconselhamento médico. Escolhe exercícios adequados à tua experiência, faz aquecimento e descansa. Para desportos ou objetivos específicos, confirma se o plano é apropriado para ti.</p>
+</main>
+<div class="footer">SportFit · Protótipo inicial</div>
+<script>
+const $ = id => document.getElementById(id);
+function selected(name){return document.querySelector('input[name="'+name+'"]:checked').value}
+function makePlan(){
+ const sport=$('sport').value.trim(), intensity=selected('intensity'), freq=selected('frequency'), duration=$('duration').value, level=$('level').value, goal=$('goal').value;
+ if(!sport){$('sport').focus();return}
+ let main;
+ const s=sport.toLowerCase();
+ if(s.includes('corrida')) main='• Parte principal: alterna corrida e caminhada conforme a tua capacidade; mantém um ritmo controlado.\n• Se já corres confortavelmente, inclui blocos curtos ao ritmo escolhido, com recuperação.';
+ else if(s.includes('futebol')) main='• Parte principal: condução de bola, passes contra uma parede ou com parceiro e mudanças de direção controladas.\n• Termina com remates ou exercício técnico, se tiveres espaço seguro.';
+ else if(s.includes('muscula')||s.includes('força')) main='• Parte principal: agachamento até uma amplitude confortável, flexões adaptadas, ponte de glúteos e exercício de core.\n• Mantém a técnica correta e descansa entre séries; usa cargas adequadas à tua experiência.';
+ else if(s.includes('natação')) main='• Parte principal: nado fácil para praticar a técnica, alternado com pausas de recuperação numa piscina segura.';
+ else if(s.includes('cicl')) main='• Parte principal: pedala num ritmo controlado, alternando períodos confortáveis com breves blocos um pouco mais ativos, se adequado.';
+ else if(s.includes('basquet')) main='• Parte principal: drible, passes, lançamentos e deslocamentos defensivos controlados, com pausas.';
+ else main='• Parte principal: pratica fundamentos técnicos de '+sport+' e combina-os com exercícios de condicionamento adequados ao teu nível. Escolhe movimentos seguros e descansa quando necessário.';
+ let load=intensity==='Fácil'?'leve e confortável':intensity==='Normal'?'moderado e controlado':'exigente, mas sem perder a técnica';
+ let plan='SPORTFIT — PLANO DE TREINO\nDesporto: '+sport+'\nIntensidade: '+intensity+'\nRegularidade: '+freq+'\nDuração: '+duration+'\nNível: '+level+'\nObjetivo: '+goal+'\n\nSESSÃO MODELO\n1. Aquecimento — 5 minutos\nMovimentos leves e mobilidade adequados ao desporto.\n\n2. Parte principal — cerca de '+(parseInt(duration)||30)+' minutos no total, incluindo pausas\n'+main+'\nAjusta o esforço a um ritmo '+load+'. Não precisas de completar tudo se te sentires demasiado cansado.\n\n3. Retorno à calma — 3 a 5 minutos\nAbranda gradualmente e faz mobilidade confortável.\n\nORGANIZAÇÃO SEMANAL\nDistribui as sessões ao longo da semana e intercala dias de descanso, especialmente após treinos exigentes.\n\nNOTAS PESSOAIS\n[Escreve aqui alterações, exercícios a substituir ou equipamento disponível.]';
+ $('summary').innerHTML='<span class="pill">'+escapeHtml(sport)+'</span><span class="pill">'+escapeHtml(intensity)+'</span><span class="pill">'+escapeHtml(freq)+'</span><span class="pill">'+escapeHtml(duration)+'</span>';
+ $('editable').value=plan; $('result').classList.add('show'); $('message').textContent='Plano criado. Podes editar o texto e copiar ou descarregar a tua versão.'; $('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('builder').addEventListener('submit',e=>{e.preventDefault();makePlan()});
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('editable').value);$('message').textContent='Treino copiado.'}catch(e){$('editable').focus();$('editable').select();$('message').textContent='Selecionámos o texto. Mantém premido e escolhe Copiar.'}});
+$('save').addEventListener('click',()=>{const blob=new Blob([$('editable').value],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SportFit-treino.txt';a.click();URL.revokeObjectURL(a.href);$('message').textContent='Se o ficheiro não aparecer, verifica a pasta Downloads/Transferências.'});
+</script>
+</body>
+</html>
